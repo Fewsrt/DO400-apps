@@ -1,15 +1,9 @@
 pipeline {
-    agent {
-        label 'nodejs'
-    }
-    stages {
-        stage('Deploy') {
+    agent any
+    stages { stage('Deploy') {
             steps {
                 sh '''
-                    oc project jmhbva-deploy-strategies oc start-build greeting-service --follow --wait
-            ''' }
-        }
-
-    // Add the "Deploy" stage here
-    }
+oc project jmhbva-deploy-strategies oc start-build greeting-service --follow --wait
+''' }
+} }
 }
