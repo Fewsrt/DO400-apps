@@ -1,32 +1,32 @@
-pipeline{
-    agent{
-        label "nodejs"
+pipeline {
+    agent {
+        label 'nodejs'
     }
-    stages{
-        stage("Install dependencies"){
-            steps{
-                sh "npm ci"
+    stages {
+        stage('Install dependencies') {
+            steps {
+                sh 'npm ci'
             }
         }
 
-        stage("Check Style"){
-            steps{
-                sh "npm run lint"
+        stage('Check Style') {
+            steps {
+                sh 'npm run lint'
             }
         }
 
-        stage("Test"){
-            steps{
-                sh "npm test"
+        stage('Test') {
+            steps {
+                sh 'npm test'
             }
         }
         stage('Deploy') {
             steps {
-sh '''
-oc project jmhbva-deploy-strategies oc start-build greeting-service --follow --wait
-''' }
-}
+                sh '''
+                    oc project jmhbva-deploy-strategies oc start-build greeting-service --follow --wait
+            ''' }
+        }
 
-        // Add the "Deploy" stage here
+    // Add the "Deploy" stage here
     }
 }
