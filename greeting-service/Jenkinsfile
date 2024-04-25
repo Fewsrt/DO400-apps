@@ -3,7 +3,8 @@ pipeline {
     stages { stage('Deploy') {
             steps {
                 sh '''
-oc project jmhbva-deploy-strategies oc start-build greeting-service --follow --wait
+                    oc project jmhbva-deploy-strategies
+                    oc start-build greeting-service --follow --wait
 ''' }
 } }
 }
